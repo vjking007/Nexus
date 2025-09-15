@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>com.example</groupId>
+  <artifactId>nexus</artifactId>
+  <versioning>
+    <lastUpdated>20250915115505</lastUpdated>
+    <snapshot>
+      <timestamp>20250915.115505</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>0.0.1-20250915.115505-1</value>
+        <updated>20250915115505</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>0.0.1-20250915.115505-1</value>
+        <updated>20250915115505</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+  <version>0.0.1-SNAPSHOT</version>
+</metadata>
