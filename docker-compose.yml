@@ -10,6 +10,21 @@ services:
       - "./nexus-data:/nexus-data"
     restart: unless-stopped
 
+#generate Jenkins with docker-compose.yml
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - "./jenkins_home:/var/jenkins_home"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/usr/bin/docker:/usr/bin/docker"
+    restart: unless-stopped
 
 volumes:
     nexus-data:
+    jenkins_home:

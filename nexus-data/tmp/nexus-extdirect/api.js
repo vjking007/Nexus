@@ -729,13 +729,13 @@ NX.direct.api.REMOTING_API = {
     ],
     coreui_Repository: [
       {
-        name: 'readReferencesAddingEntriesForAllFormats',
-        len: 1,
+        name: 'getBrowseableFormats',
+        len: 0,
         formHandler: false
       },
       {
-        name: 'getBrowseableFormats',
-        len: 0,
+        name: 'readReferencesAddingEntriesForAllFormats',
+        len: 1,
         formHandler: false
       },
       {
