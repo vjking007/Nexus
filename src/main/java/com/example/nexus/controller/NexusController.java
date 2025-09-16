@@ -15,6 +15,6 @@ public class NexusController {
 
     @GetMapping("/status")
     public String getStatus() {
-        return "Nexus is running";
+        return "Jenkins is running";
     }
 }
