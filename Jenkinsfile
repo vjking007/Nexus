@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'MAVEN_HOME'   // Jenkins Global Tool Config name
-        jdk 'JAVA_HOME'      // Jenkins Global Tool Config name
-    }
-
     stages {
         stage('Checkout') {
             steps {
