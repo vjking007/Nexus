@@ -1,38 +1,52 @@
-//Generate a Jenkinsfile for a maven project with stages for build, test, and deploy with simple echo commands in each stage.
-//Use a declarative pipeline syntax.
 pipeline {
     agent any
 
+    tools {
+        maven 'MAVEN_HOME'   // Jenkins Global Tool Config name
+        jdk 'JAVA_HOME'      // Jenkins Global Tool Config name
+    }
+
     stages {
+        stage('Checkout') {
+            steps {
+                echo "📥 Checking out source code..."
+                git branch: 'main', url: 'https://github.com/vjking007/Nexus.git'
+            }
+        }
+
         stage('Build') {
             steps {
-                echo 'Building the project...'
-                // Add your build commands here, e.g., sh 'mvn clean install'
+                echo "🏗️ Building the project with Maven..."
+                sh 'mvn clean package -DskipTests'
             }
         }
+
         stage('Test') {
             steps {
-                echo 'Running tests...'
-                // Add your test commands here, e.g., sh 'mvn test'
+                echo "🧪 Running tests..."
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
             }
         }
-        stage('Deploy') {
+
+        stage('Archive Artifact') {
             steps {
-                echo 'Deploying the application...'
-                // Add your deploy commands here, e.g., sh 'mvn deploy'
+                echo "📦 Archiving build artifacts..."
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
     }
 
     post {
-        always {
-            echo 'This will always run after the stages.'
-        }
         success {
-            echo 'The pipeline completed successfully!'
+            echo "✅ Build and test completed successfully!"
         }
         failure {
-            echo 'The pipeline failed.'
+            echo "❌ Build failed. Please check logs."
         }
     }
 }
